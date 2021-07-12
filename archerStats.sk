@@ -1,0 +1,211 @@
+on load:
+
+	#Class Names
+	set {KitPvP::KitManager::Archer::ClassName} to "Archer"
+
+	
+	#Starting Level
+	set {KitPvP::KitManager::Archer::StartingKitLevel} to 1
+	
+	#Minimum Kit Level
+	set {KitPvP::KitManager::Archer::MinKitLevel} to 1
+	
+	#Maximum Kit Level
+	set {KitPvP::KitManager::Archer::MaxKitLevel} to 10
+	
+	#Abilities
+	# NEED TO CHANGE ABILITY NAMES
+	set {KitPvP::KitManager::Archer::Abilities::Passive::*} to "Burning Embers", "From the Ashes", and "Eruption"
+	set {KitPvP::KitManager::Archer::Abilities::Active::*} to "Fireball", "Fiery Furvor", and "Furnace"
+	
+	
+	#Subsection: Archer Passive Skills
+	#Burning Embers Cost
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::1::Cost} to 0
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::2::Cost} to 250
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::3::Cost} to 500
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::4::Cost} to 750
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::5::Cost} to 1000
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::6::Cost} to 1250
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::7::Cost} to 2500
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::8::Cost} to 5000
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::9::Cost} to 10000
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::10::Cost} to 25000
+	
+	#Burning Embers % Chance (in percent)
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::1::Chance} to 10
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::2::Chance} to 12.5
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::3::Chance} to 15
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::4::Chance} to 17.5
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::5::Chance} to 20
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::6::Chance} to 22.5
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::7::Chance} to 25
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::8::Chance} to 27.5
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::9::Chance} to 30
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::10::Chance} to 35
+
+	#Burning Embers % of Strength (in percent)
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::1::STRP} to 5
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::2::STRP} to 6
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::3::STRP} to 7
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::4::STRP} to 8
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::5::STRP} to 9
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::6::STRP} to 10
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::7::STRP} to 11
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::8::STRP} to 12
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::9::STRP} to 13
+	set {KitPvP::KitManager::Archer::Abilities::Passive::BurningEmbers::Level::10::STRP} to 15
+	
+	#From The Ashes Cost
+	set {KitPvP::KitManager::Archer::Abilities::Passive::FromTheAshes::Level::1::Cost} to 0
+	set {KitPvP::KitManager::Archer::Abilities::Passive::FromTheAshes::Level::2::Cost} to 250
+	set {KitPvP::KitManager::Archer::Abilities::Passive::FromTheAshes::Level::3::Cost} to 500
+	set {KitPvP::KitManager::Archer::Abilities::Passive::FromTheAshes::Level::4::Cost} to 750
+	set {KitPvP::KitManager::Archer::Abilities::Passive::FromTheAshes::Level::5::Cost} to 1000
+	set {KitPvP::KitManager::Archer::Abilities::Passive::FromTheAshes::Level::6::Cost} to 1250
+	set {KitPvP::KitManager::Archer::Abilities::Passive::FromTheAshes::Level::7::Cost} to 2500
+	set {KitPvP::KitManager::Archer::Abilities::Passive::FromTheAshes::Level::8::Cost} to 5000
+	set {KitPvP::KitManager::Archer::Abilities::Passive::FromTheAshes::Level::9::Cost} to 10000
+	set {KitPvP::KitManager::Archer::Abilities::Passive::FromTheAshes::Level::10::Cost} to 25000
+	
+	#Eruption Cost
+	set {KitPvP::KitManager::Archer::Abilities::Passive::Eruption::Level::1::Cost} to 0
+	set {KitPvP::KitManager::Archer::Abilities::Passive::Eruption::Level::2::Cost} to 250
+	set {KitPvP::KitManager::Archer::Abilities::Passive::Eruption::Level::3::Cost} to 500
+	set {KitPvP::KitManager::Archer::Abilities::Passive::Eruption::Level::4::Cost} to 750
+	set {KitPvP::KitManager::Archer::Abilities::Passive::Eruption::Level::5::Cost} to 1000
+	set {KitPvP::KitManager::Archer::Abilities::Passive::Eruption::Level::6::Cost} to 1250
+	set {KitPvP::KitManager::Archer::Abilities::Passive::Eruption::Level::7::Cost} to 2500
+	set {KitPvP::KitManager::Archer::Abilities::Passive::Eruption::Level::8::Cost} to 5000
+	set {KitPvP::KitManager::Archer::Abilities::Passive::Eruption::Level::9::Cost} to 10000
+	set {KitPvP::KitManager::Archer::Abilities::Passive::Eruption::Level::10::Cost} to 25000
+	
+	#Subsetion: Archer Active Skills
+	#Fireball Cost
+	set {KitPvP::KitManager::Archer::Abilities::Active::Fireball::Level::1::Cost} to 0
+	set {KitPvP::KitManager::Archer::Abilities::Active::Fireball::Level::2::Cost} to 250
+	set {KitPvP::KitManager::Archer::Abilities::Active::Fireball::Level::3::Cost} to 500
+	set {KitPvP::KitManager::Archer::Abilities::Active::Fireball::Level::4::Cost} to 750
+	set {KitPvP::KitManager::Archer::Abilities::Active::Fireball::Level::5::Cost} to 1000
+	set {KitPvP::KitManager::Archer::Abilities::Active::Fireball::Level::6::Cost} to 1250
+	set {KitPvP::KitManager::Archer::Abilities::Active::Fireball::Level::7::Cost} to 2500
+	set {KitPvP::KitManager::Archer::Abilities::Active::Fireball::Level::8::Cost} to 5000
+	set {KitPvP::KitManager::Archer::Abilities::Active::Fireball::Level::9::Cost} to 10000
+	set {KitPvP::KitManager::Archer::Abilities::Active::Fireball::Level::10::Cost} to 25000
+	
+	#Fiery Furvor Cost
+	set {KitPvP::KitManager::Archer::Abilities::Active::FieryFurvor::Level::1::Cost} to 0
+	set {KitPvP::KitManager::Archer::Abilities::Active::FieryFurvor::Level::2::Cost} to 250
+	set {KitPvP::KitManager::Archer::Abilities::Active::FieryFurvor::Level::3::Cost} to 500
+	set {KitPvP::KitManager::Archer::Abilities::Active::FieryFurvor::Level::4::Cost} to 750
+	set {KitPvP::KitManager::Archer::Abilities::Active::FieryFurvor::Level::5::Cost} to 1000
+	set {KitPvP::KitManager::Archer::Abilities::Active::FieryFurvor::Level::6::Cost} to 1250
+	set {KitPvP::KitManager::Archer::Abilities::Active::FieryFurvor::Level::7::Cost} to 2500
+	set {KitPvP::KitManager::Archer::Abilities::Active::FieryFurvor::Level::8::Cost} to 5000
+	set {KitPvP::KitManager::Archer::Abilities::Active::FieryFurvor::Level::9::Cost} to 10000
+	set {KitPvP::KitManager::Archer::Abilities::Active::FieryFurvor::Level::10::Cost} to 25000
+	
+	#Furnace Cost
+	set {KitPvP::KitManager::Archer::Abilities::Active::Furnace::Level::1::Cost} to 0
+	set {KitPvP::KitManager::Archer::Abilities::Active::Furnace::Level::2::Cost} to 250
+	set {KitPvP::KitManager::Archer::Abilities::Active::Furnace::Level::3::Cost} to 500
+	set {KitPvP::KitManager::Archer::Abilities::Active::Furnace::Level::4::Cost} to 750
+	set {KitPvP::KitManager::Archer::Abilities::Active::Furnace::Level::5::Cost} to 1000
+	set {KitPvP::KitManager::Archer::Abilities::Active::Furnace::Level::6::Cost} to 1250
+	set {KitPvP::KitManager::Archer::Abilities::Active::Furnace::Level::7::Cost} to 2500
+	set {KitPvP::KitManager::Archer::Abilities::Active::Furnace::Level::8::Cost} to 5000
+	set {KitPvP::KitManager::Archer::Abilities::Active::Furnace::Level::9::Cost} to 10000
+	set {KitPvP::KitManager::Archer::Abilities::Active::Furnace::Level::10::Cost} to 25000
+	
+	#Archer Costs
+	set {KitPvP::KitManager::Archer::Level::1::Cost} to 0
+	set {KitPvP::KitManager::Archer::Level::2::Cost} to 250
+	set {KitPvP::KitManager::Archer::Level::3::Cost} to 500
+	set {KitPvP::KitManager::Archer::Level::4::Cost} to 750
+	set {KitPvP::KitManager::Archer::Level::5::Cost} to 1000
+	set {KitPvP::KitManager::Archer::Level::6::Cost} to 1250
+	set {KitPvP::KitManager::Archer::Level::7::Cost} to 2500
+	set {KitPvP::KitManager::Archer::Level::8::Cost} to 5000
+	set {KitPvP::KitManager::Archer::Level::9::Cost} to 10000
+	set {KitPvP::KitManager::Archer::Level::10::Cost} to 25000
+	
+	#Archer Level 1
+	set {KitPvP::KitManager::Archer::Level::1::HP} to 10
+	set {KitPvP::KitManager::Archer::Level::1::Speed} to 10
+	set {KitPvP::KitManager::Archer::Level::1::Defense} to 8
+	set {KitPvP::KitManager::Archer::Level::1::Strength} to 7
+	set {KitPvP::KitManager::Archer::Level::1::CritChance} to 4
+	set {KitPvP::KitManager::Archer::Level::1::Evasion} to 5
+
+	#Archer Level 2
+	set {KitPvP::KitManager::Archer::Level::2::HP} to 10
+	set {KitPvP::KitManager::Archer::Level::2::Speed} to 10
+	set {KitPvP::KitManager::Archer::Level::2::Defense} to 8
+	set {KitPvP::KitManager::Archer::Level::2::Strength} to 7
+	set {KitPvP::KitManager::Archer::Level::2::CritChance} to 4
+	set {KitPvP::KitManager::Archer::Level::2::Evasion} to 5
+
+	#Archer Level 3
+	set {KitPvP::KitManager::Archer::Level::3::HP} to 10
+	set {KitPvP::KitManager::Archer::Level::3::Speed} to 10
+	set {KitPvP::KitManager::Archer::Level::3::Defense} to 8
+	set {KitPvP::KitManager::Archer::Level::3::Strength} to 7
+	set {KitPvP::KitManager::Archer::Level::3::CritChance} to 4
+	set {KitPvP::KitManager::Archer::Level::3::Evasion} to 5
+	
+	#Archer Level 4
+	set {KitPvP::KitManager::Archer::Level::4::HP} to 10
+	set {KitPvP::KitManager::Archer::Level::4::Speed} to 10
+	set {KitPvP::KitManager::Archer::Level::4::Defense} to 8
+	set {KitPvP::KitManager::Archer::Level::4::Strength} to 7
+	set {KitPvP::KitManager::Archer::Level::4::CritChance} to 4
+	set {KitPvP::KitManager::Archer::Level::4::Evasion} to 5
+
+	#Archer Level 5
+	set {KitPvP::KitManager::Archer::Level::5::HP} to 10
+	set {KitPvP::KitManager::Archer::Level::5::Speed} to 10
+	set {KitPvP::KitManager::Archer::Level::5::Defense} to 8
+	set {KitPvP::KitManager::Archer::Level::5::Strength} to 7
+	set {KitPvP::KitManager::Archer::Level::5::CritChance} to 4
+	set {KitPvP::KitManager::Archer::Level::5::Evasion} to 5
+	
+	#Archer Level 6
+	set {KitPvP::KitManager::Archer::Level::6::HP} to 10
+	set {KitPvP::KitManager::Archer::Level::6::Speed} to 10
+	set {KitPvP::KitManager::Archer::Level::6::Defense} to 8
+	set {KitPvP::KitManager::Archer::Level::6::Strength} to 7
+	set {KitPvP::KitManager::Archer::Level::6::CritChance} to 4
+	set {KitPvP::KitManager::Archer::Level::6::Evasion} to 5
+
+	#Archer Level 7
+	set {KitPvP::KitManager::Archer::Level::7::HP} to 10
+	set {KitPvP::KitManager::Archer::Level::7::Speed} to 10
+	set {KitPvP::KitManager::Archer::Level::7::Defense} to 8
+	set {KitPvP::KitManager::Archer::Level::7::Strength} to 7
+	set {KitPvP::KitManager::Archer::Level::7::CritChance} to 4
+	set {KitPvP::KitManager::Archer::Level::7::Evasion} to 5
+
+	#Archer Level 8
+	set {KitPvP::KitManager::Archer::Level::8::HP} to 10
+	set {KitPvP::KitManager::Archer::Level::8::Speed} to 10
+	set {KitPvP::KitManager::Archer::Level::8::Defense} to 8
+	set {KitPvP::KitManager::Archer::Level::8::Strength} to 7
+	set {KitPvP::KitManager::Archer::Level::8::CritChance} to 4
+	set {KitPvP::KitManager::Archer::Level::8::Evasion} to 5
+	
+	#Archer Level 9
+	set {KitPvP::KitManager::Archer::Level::9::HP} to 10
+	set {KitPvP::KitManager::Archer::Level::9::Speed} to 10
+	set {KitPvP::KitManager::Archer::Level::9::Defense} to 8
+	set {KitPvP::KitManager::Archer::Level::9::Strength} to 7
+	set {KitPvP::KitManager::Archer::Level::9::CritChance} to 4
+	set {KitPvP::KitManager::Archer::Level::9::Evasion} to 5
+
+	#Archer Level 10
+	set {KitPvP::KitManager::Archer::Level::10::HP} to 10
+	set {KitPvP::KitManager::Archer::Level::10::Speed} to 10
+	set {KitPvP::KitManager::Archer::Level::10::Defense} to 8
+	set {KitPvP::KitManager::Archer::Level::10::Strength} to 7
+	set {KitPvP::KitManager::Archer::Level::10::CritChance} to 4
+	set {KitPvP::KitManager::Archer::Level::10::Evasion} to 5
+
