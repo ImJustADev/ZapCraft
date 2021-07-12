@@ -1,0 +1,30 @@
+on inventory click:
+	event-inventory is not player's inventory:
+		cancel event
+		#Main Kit Menu Click Action(s)
+		name of player's current inventory = "Kit Menu":
+			name of clicked item contains "&9Pyro Class":
+				close player's inventory
+				openPyroGUI(player, "Overview")
+
+		#Pyro Page 1 Click Action(s)
+		else if name of player's current inventory = "Class: Pyro":
+			name of clicked item contains "&bPassive Skills":
+				close player's inventory
+				openPyroGUI(player, "PassiveSkills")
+			name of clicked item contains "&9Close Class Menu":
+				close player's inventory
+				send "&cYou have closed the class menu (/kitmenu)"
+		#else if name of player's current inventory = "Passive Skills Menu (Pyro)":
+			#if clicked slot 
+
+# Cooldown stuff
+#This command has a cooldown of 1 minute,
+#meaning a player can only use it each minute.
+#If a player tries to use it more than once in a minute,
+#the cooldown message is shown
+#	cooldown: 1 minute
+#	cooldown message: You need to wait &l%remaining time% &rto use this command again!
+#	cooldown bypass: cake.nocooldown
+#	cancel command cooldown 
+

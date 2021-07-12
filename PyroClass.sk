@@ -1,0 +1,176 @@
+#
+# Class: PyroClass.sk
+# Last Updated: 7/12/2021 
+# User: JustADev/BlazeTheSnep
+#
+#
+# Ability Abreviation Guide
+#
+# BE = Burning Embers (Passive) (Pyro)
+# FTA = From The Ashes (Passive) (Pyro)
+# ER = Eruption (Passive) (Pyro)
+# FB = Fireball (Active) (Pyro)
+# FF = Fiery Furvor (Active) (Pyro)
+# FN = Furnace (Acitve) (Pyro)
+
+
+# Main Pyro Class GUI function
+# 
+# Options:
+# page option(s): Overview, PassiveSkills
+function openPyroGUI(p: player, page: text):
+
+	# Player's UUID
+	set {_u} to {_p}'s uuid
+
+	# get class level
+	set {_pyroLevel} to getClassLevel({_p}, "Pyro")
+	
+	# get class substats
+	set {_pyroHP} to getClassHP({_p}, "Pyro")
+	set {_pyroSpeed} to getClassSpeed({_p}, "Pyro")
+	set {_pyroDefense} to getClassDefense({_p}, "Pyro")
+	set {_pyroStrength} to getClassStrength({_p}, "Pyro")
+	set {_pyroCritChance} to getClassCritChance({_p}, "Pyro")
+	set {_pyroEvasion} to getClassEvasion({_p}, "Pyro")
+	
+	# get passive skill levels
+	set {_BELevel} to getPassiveAbilityLevel({_p}, "Pyro", "BurningEmbers")
+	set {_FTALevel} to getPassiveAbilityLevel({_p}, "Pyro", "FromTheAshes")
+	set {_ERLevel} to getPassiveAbilityLevel({_p}, "Pyro", "Eruption") 
+
+	# get active skill levels
+	set {_FBLevel} to getActiveAbilityLevel({_p}, "Pyro", "Fireball")
+	set {_FFLevel} to getActiveAbilityLevel({_p}, "Pyro", "FieryFurvor")
+	set {_FNLevel} to getActiveAbilityLevel({_p}, "Pyro", "Furnace")
+
+	# getting Skill Substats
+	loop 10 times:
+
+		# get Burning Embers (passive) skill cost, chance, and strength %
+		set {_BE::Cost::%loop-number%} to getPassiveAbilityCost({_p}, "Pyro", "BurningEmbers", loop-number)
+		set {_BE::Chance::%loop-number%} to getBurningEmberChance({_p}, loop-number)
+		set {_BE::Strength::%loop-number%} to getBurningEmberStrength({_p}, loop-number)
+
+		# get From The Ashes (passive) skill cost, belowHP, and FireDMG
+		set {_FTA::Cost::%loop-number%} to getPassiveAbilityCost({_p}, "Pyro", "FromTheAshes", loop-number)
+		set {_FTA::BelowHP::%loop-number%} to getFromTheAshesBelowHP({_p}, loop-number)
+		set {_FTA::FireDMG::%loop-number%} to getFromTheAshesFireDMG({_p}, loop-number)
+
+
+	# Main Class Menu GUI
+	if {_page} = "Overview":
+		open chest inventory with 1 rows named "Class: Pyro" to {_p}
+
+		# Setting Items
+		set slot 0 of {_p}'s current inventory to iron chestplate named "&bClass Upgrades" with lore "&8Level %{_pyroLevel}%/10", "", "&7Use coins to upgrade your kit to buff", "&7your skill sets and class items", "", and "&eClick to manage"
+		set slot 1 of {_p}'s current inventory to empty map named "&bPassive Skills" with lore "&8Skills: 3", "", "&7Upgrade passive skills here", "", "&9Burning Embers: &fLvl %{_BELevel}%/10", "&9From the Ashes: &fLvl %{_FTALevel}%/10", "&9Eruption: &fLvl %{_ERLevel}%/10", "", and "&eClick to manage"
+		set slot 2 of {_p}'s current inventory to clay named "&bActive Skills" with lore "&8Skills: 3", "", "&7Upgrade active skills here", "", "&9Fireball: &fLvl %{_FBLevel}%/10", "&9Fiery Furvor: &fLvl %{_FFLevel}%/10", "&9Furnace: &fLvl %{_FNLevel}%/10", "", and "&eClick to manage"
+		set slot 6 of {_p}'s current inventory to book named "&bKit Stats" with lore "&7View your statistics for this kit", "", and "&eClick to view"
+		set slot 7 of {_p}'s current inventory to emerald block named "&aSelect this Class" with lore "&7Click to use the &9Pyro Class" 
+		set slot 8 of {_p}'s current inventory to redstone block named "&cClose Class Menu" with lore "&7Click to close the menu"
+
+	# Passive Skills GUI
+	else if {_page} = "PassiveSkills":
+		open chest inventory with 6 rows named "Passive Skills Menu (Pyro)" to {_p}
+
+		# Gray Stained Glass Pane Filler Items
+		set {_x} to 10
+		loop 8 times:
+			set slot {_x} of {_p}'s current inventory to gray stained glass pane named "&7"
+			add 1 to {_x}
+
+
+		# PASSIVE SKILL 1: BURNING EMBERS
+
+		# Skill Icon: Burning Embers
+		# Set Item in Inventory
+		set slot 0 of {_p}'s current inventory to fire charge named "&9Skill: &fBurning Embers" with lore "&8Skill Type - Burn", "&8Level: 1", "", "&9Description:", "&e%{_BE::Chance::1}%%%&7 chance to burn nearby players", "&7dealing &c%{_BE::Strength::1}%%%&7 of your strength as damage", "&7upon attack", "", and "&aALREADY UNLOCKED"
+			
+		loop 9 times:
+
+			# Next Level
+			set {_n} to loop-number + 1
+
+			# If not unlocked, set to gray dye
+			if (loop-number) >= {_BELevel}:
+				set {_item} to gray dye
+
+			# If unlocked, set to lime dye
+			else if (loop-number) < {_BELevel}:
+				set {_item} to lime dye
+
+			# Base Item Name
+			set {_meta::name} to "&9Skill: &fBurning Embers"
+
+			# Base Item Lore/Meta
+			set {_meta::lore::*} to "&8Skill Type - Burn", "&8Level: %{_n}%", "", "&9Description:", "&e%{_BE::Chance::%loop-number%}%%%&7 chance to burn nearby players", "&7dealing &c%{_BE::Strength::%loop-number%}%%%&7 of your strength as damage", "&7upon attack", "", "&7Cost: &e%{_BE::Cost::%{_n}%}% Coin(s)", and ""
+			
+			# If already unlocked
+			if {_n} = {_BELevel}:
+				add "&aALREADY UNLOCKED" to {_meta::lore::*}
+			
+			# If not unlocked
+			else if {_n} > {_BELevel}:
+				
+				# If counter = Skill Level (Purchasable)
+				if loop-number = {_BELevel}:
+					add "&eClick to Purchase" to {_meta::lore::*}
+				else:
+					# If > 1 Level, Locked (Not-Purchasable)
+					set {_next} to {_BELevel} + 1
+					add "&cMissing: Tier %{_next}% Upgrade" to {_meta::lore::*}
+			
+			# Set Item in Inventory
+			set slot loop-number of {_p}'s current inventory to {_item} named {_meta::name} with lore {_meta::lore::*} 
+		
+		# END OF PASSIVE SKILL 1: BURNING EMBERS
+
+		# Gray Stained Glass Pane Filler Items
+		set {_x} to 28 # + 18 (10 + 18)
+		loop 8 times:
+			set slot {_x} of {_p}'s current inventory to gray stained glass pane named "&7"
+			add 1 to {_x}
+
+		# PASSIVE SKILL 2: FROM THE ASHES
+		
+		# Skill Icon: From The Ashes
+		# Set Item in Inventory
+		set slot 18 of {_p}'s current inventory to feather named "&9Skill: &fFrom The Ashes" with lore "&8Skill Type - Buff", "&8Level: 1", "", "&9Description:", "&7If you are below &e%{_FTA::BelowHP::1}%%%&7 HP,", "&7your fire attacks will do &e%{_FTA::FireDMG::1}%%%&7 more damage", "", "&7Cost: &e%{_FTA::Cost::1}% Coin(s)", "", and "&aALREADY UNLOCKED"
+			
+		loop 9 times:
+
+			# Next Level
+			set {_n} to loop-number + 1 # + 9 (1 + 9)
+
+			# If not unlocked, set to gray dye
+			if (loop-number) >= {_FTALevel}:
+				set {_item} to gray dye
+
+			# If unlocked, set to lime dye
+			else if (loop-number) < {_FTALevel}:
+				set {_item} to lime dye
+
+			# Base Item Name
+			set {_meta::name} to "&9Skill: &fFrom The Ashes"
+
+			# Base Item Lore/Meta
+			set {_meta::lore::*} to "&8Skill Type - Buff", "&8Level: %{_n}%", "", "&9Description:", "&7If you are below &e%{_FTA::BelowHP::%loop-number%}%%%&7 HP,", "&7your fire attacks will do &e%{_FTA::FireDMG::%loop-number%}%%%&7 more damage", "", "&7Cost: &e%{_FTA::Cost::%{_n}%}% Coin(s)", and ""
+			
+			# If already unlocked
+			if {_n} = {_FTALevel}:
+				add "&aALREADY UNLOCKED" to {_meta::lore::*}
+			
+			# If not unlocked
+			else if {_n} > {_FTALevel}:
+				
+				# If counter = Skill Level (Purchasable)
+				if loop-number = {_FTALevel}:
+					add "&eClick to Purchase" to {_meta::lore::*}
+				else:
+					# If > 1 Level, Locked (Not-Purchasable)
+					set {_next} to {_FTALevel} + 1
+					add "&cMissing: Tier %{_next}% Upgrade" to {_meta::lore::*}
+			
+			# Set Item in Inventory
+			set slot loop-number + 18 of {_p}'s current inventory to {_item} named {_meta::name} with lore {_meta::lore::*} 

@@ -1,0 +1,164 @@
+
+# gets the player's class
+function getClass(p: player) :: string:
+	set {_u} to {_p}'s uuid
+	if {KitPvP::Stats::Class::%{_u}%} != "None":
+		return {KitPvP::Stats::Class::%{_u}%}
+	else:
+		return "None"
+
+# gets the player's level
+function getLevel(p: player) :: integer:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::Stats::Level::%{_u}%}
+
+# gets the player's class level
+function getClassLevel(p: player, class: string) :: integer:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::Stats::Class::%{_class}%::Level::%{_u}%} 
+
+# gets the HP of a player's class 
+function getClassHP(p: player, class: string) :: number:
+	set {_u} to {_p}'s uuid 
+	set {_lvl} to getClassLevel({_p}, {_class})
+	return {KitPvP::KitManager::%{_class}%::Level::%{_lvl}%::HP}
+
+# gets the Speed of a player's class
+function getClassSpeed(p: player, class: string) :: number:
+	set {_u} to {_p}'s uuid 
+	set {_lvl} to getClassLevel({_p}, {_class})
+	return {KitPvP::KitManager::%{_class}%::Level::%{_lvl}%::Speed}
+
+# gets the Defense of a player's class
+function getClassDefense(p: player, class: string) :: number:
+	set {_u} to {_p}'s uuid 
+	set {_lvl} to getClassLevel({_p}, {_class})
+	return {KitPvP::KitManager::%{_class}%::Level::%{_lvl}%::Defense}
+
+# gets the Strength of a player's class
+function getClassStrength(p: player, class: string) :: number:
+	set {_u} to {_p}'s uuid 
+	set {_lvl} to getClassLevel({_p}, {_class})
+	return {KitPvP::KitManager::%{_class}%::Level::%{_lvl}%::Strength}
+
+# gets the Critical Chance of a player's class
+function getClassCritChance(p: player, class: string) :: number:
+	set {_u} to {_p}'s uuid 
+	set {_lvl} to getClassLevel({_p}, {_class})
+	return {KitPvP::KitManager::%{_class}%::Level::%{_lvl}%::CritChance}
+
+# gets the Evasion of a player's class
+function getClassEvasion(p: player, class: string) :: number:
+	set {_u} to {_p}'s uuid 
+	set {_lvl} to getClassLevel({_p}, {_class})
+	return {KitPvP::KitManager::%{_class}%::Level::%{_lvl}%::Evasion}
+
+# gets the ability level from a player's passive ability tree
+function getPassiveAbilityLevel(p: player, class: string, ability: string) :: integer:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::Stats::Class::%{_class}%::Abilities::Passive::%{_ability}%::Level::%{_u}%}
+
+# gets the cost of a player's passive ability upgrade
+function getPassiveAbilityCost(p: player, class: string, ability: string, lvl: number) :: number:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::KitManager::%{_class}%::Abilities::Passive::%{_ability}%::Level::%{_lvl}%::Cost}
+
+# gets the ability level from a player's active ability tree
+function getActiveAbilityLevel(p: player, class: string, ability: string) :: integer:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::Stats::Class::%{_class}%::Abilities::Active::%{_ability}%::Level::%{_u}%}
+
+# gets the cost of a player's active ability upgrade
+function getActiveAbilityCost(p: player, class: string, ability: string, lvl: number) :: number:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::KitManager::%{_class}%::Abilities::Active::%{_ability}%::Level::%{_lvl}%::Cost}
+
+
+# gets the ability "Burning Embers"'s chance
+function getBurningEmberChance(p: player, lvl: number) :: number:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::KitManager::Pyro::Abilities::Passive::BurningEmbers::Level::%{_lvl}%::Chance}
+
+# gets the ability "Burning Ember"'s strength
+function getBurningEmberStrength(p: player, lvl: number) :: number:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::KitManager::Pyro::Abilities::Passive::BurningEmbers::Level::%{_lvl}%::STRP}
+
+# gets the ability "From The Ashes"'s below HP % statistic
+function getFromTheAshesBelowHP(p: player, lvl: number) :: number:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::KitManager::Pyro::Abilities::Passive::FromTheAshes::Level::%{_lvl}%::BelowHP}
+
+# gets the ability "From The Ashes"'s fire damage % statistic
+function getFromTheAshesFireDMG(p: player, lvl: number) :: number:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::KitManager::Pyro::Abilities::Passive::FromTheAshes::Level::%{_lvl}%::FireDMG}
+
+# Add coins to a player's balance
+function addCoins(p: player, coins: integer):
+	set {_u} to {_p}'s uuid
+	if {_coins} <= 0:
+		stop
+	else:
+		add {_coins} to {KitPvP::Stats::Coins::%{_u}%}
+
+# Add deaths to a player's statistics
+function addDeaths(p: player, deaths: integer):
+	set {_u} to {_p}'s uuid
+	if {_deaths} <= 0:
+		stop
+	else:
+		add {_deaths} to {KitPvP::Stats::Deaths::%{_u}%}
+
+# Remove coins from a player's balance
+function removeCoins(p: player, coins: integer):
+	set {_u} to {_p}'s uuid
+	set {_balance} to {KitPvP::Stats::Coins::%{_u}%}
+	if {_coins} <= 0:
+		stop
+	else if {_coins} >= {_balance}:
+		set {KitPvP::Stats::Coins::%{_u}%} to 0
+	else:
+		remove {_coins} from {KitPvP::Stats::Coins::%{_u}%}
+# Remove deaths from a player's statistics
+function removeDeaths(p: player, deaths: integer):
+	set {_u} to {_p}'s uuid
+	set {_x} to {KitPvP::Stats::Deaths::%{_u}%}
+	if {_deaths} <= 0:
+		stop
+	else if {_deaths} >= {_x}:
+		set {KitPvP::Stats::Deaths::%{_u}%} to 0
+	else:
+		remove {_deaths} from {KitPvP::Stats::Deaths::%{_u}%}
+
+# Set a player's balance
+function setCoins(p: player, coins: integer):
+	set {_u} to {_p}'s uuid
+	if {_coins} < 0:
+		stop
+	else:
+		set {KitPvP::Stats::Coins::%{_u}%} to {_coins}
+# Set a player's deaths
+function setDeaths(p: player, deaths: integer):
+	set {_u} to {_p}'s uuid
+	if {_deaths} < 0:
+		stop
+	else:
+		set {KitPvP::Stats::Deaths::%{_u}%} to {_deaths}
+# Get the player's balance
+function getCoins(p: player) :: integer:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::Stats::Coins::%{_u}%}
+# Get the player's deaths
+function getDeaths(p: player) :: integer:
+	set {_u} to {_p}'s uuid
+	return {KitPvP::Stats::Deaths::%{_u}%}
+# Reset the player's balance
+function resetCoins(p: player):
+	set {_u} to {_p}'s uuid
+	set {KitPvP::Stats::Coins::%{_u}%} to 0
+# Reset the player's deaths
+function resetDeaths(p: player):
+	set {_u} to {_p}'s uuid
+	set {KitPvP::Stats::Deaths::%{_u}%} to 0
+#

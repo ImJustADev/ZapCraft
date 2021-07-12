@@ -1,0 +1,28 @@
+function openKitMenu(p: player):
+
+	set {_u} to {_p}'s uuid
+
+	set {_pyroLevel} to getClassLevel({_p}, "Pyro")
+	set {_tankLevel} to getClassLevel({_p}, "Tank")
+	set {_warriorLevel} to getClassLevel({_p}, "Warrior")
+	set {_archerLevel} to getClassLevel({_p}, "Archer")
+	set {_ninjaLevel} to getClassLevel({_p}, "Ninja")
+	set {_witchLevel} to getClassLevel({_p}, "Witch")
+	
+	set {_pyroHP} to getClassHP({_p}, "Pyro")
+	set {_pyroSpeed} to getClassSpeed({_p}, "Pyro")
+	set {_pyroDefense} to getClassDefense({_p}, "Pyro")
+	set {_pyroStrength} to getClassStrength({_p}, "Pyro")
+	set {_pyroCritChance} to getClassCritChance({_p}, "Pyro")
+	set {_pyroEvasion} to getClassEvasion({_p}, "Pyro")
+	
+	open chest inventory with 1 rows named "Kit Menu" to {_p}
+	set slot 0 of {_p}'s current inventory to blaze powder named "&9Pyro Class &7(Lvl %{_pyroLevel}%/10)" with lore "&8&oDoT playstyle", "",  "&9Skills Overview:", "", "&fHP: &a%{_pyroHP}%", "&fSpeed: &a%{_pyroSpeed}%", "&fDefense: &a%{_pyroDefense}%", "&fStrength: &a%{_pyroStrength}%", "&fCrit Chance: &a%{_pyroCritChance}%", "&fEvasion: &a%{_pyroEvasion}%", "", and "&eClick to view"
+
+command /kit:
+	description: Main Kit Command
+	aliases: /zapcraft:kit, /zapcraft:kitmenu, /kitmenu
+	permission: zc.kitpvp.cmd.kit
+	permission message: &cYou don't have permission to do this
+	trigger:
+		openKitMenu(player)

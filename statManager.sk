@@ -1,0 +1,25 @@
+on join:
+	set {KitPvP::Stats::Kills::%player's uuid%} to 0
+	set {KitPvP::Stats::Deaths::%player's uuid%} to 0
+	set {KitPvP::Stats::KDR::%player's uuid%} to 0
+	set {KitPvP::Stats::Coins::%player's uuid%} to 0
+	set {KitPvP::Stats::Multiplier::%player's uuid%} to 1
+	set {KitPvP::Stats::Level::%player's uuid%} to 0
+	set {KitPvP::Stats::Class::%player's uuid%} to "None"
+	
+	set {KitPvP::Stats::Class::Pyro::Level::%player's uuid%} to 1
+	set {KitPvP::Stats::Class::Tank::Level::%player's uuid%} to 1
+	set {KitPvP::Stats::Class::Warrior::Level::%player's uuid%} to 1
+	set {KitPvP::Stats::Class::Archer::Level::%player's uuid%} to 1
+	set {KitPvP::Stats::Class::Ninja::Level::%player's uuid%} to 1
+	set {KitPvP::Stats::Class::Witch::Level::%player's uuid%} to 1
+	
+	# Set Pyro Passive Skills
+	set {KitPvP::Stats::Class::Pyro::Abilities::Passive::BurningEmbers::Level::%player's uuid%} to 1
+	set {KitPvP::Stats::Class::Pyro::Abilities::Passive::FromTheAshes::Level::%player's uuid%} to 1 
+	set {KitPvP::Stats::Class::Pyro::Abilities::Passive::Eruption::Level::%player's uuid%} to 1
+	
+	# Set Pyro Active Skills
+	set {KitPvP::Stats::Class::Pyro::Abilities::Active::Fireball::Level::%player's uuid%} to 1
+	set {KitPvP::Stats::Class::Pyro::Abilities::Active::FieryFurvor::Level::%player's uuid%} to 1
+	set {KitPvP::Stats::Class::Pyro::Abilities::Acitve::Furnace::Level::%player's uuid%} to 1
